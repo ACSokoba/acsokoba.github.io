@@ -1,6 +1,11 @@
 import { Talk } from "../../data";
 
-function TalkCard({ talk }: { talk: Talk }) {
+type TalkCardProps = {
+  talk: Talk;
+  ctaLabel?: string;
+};
+
+function TalkCard({ talk, ctaLabel = "View" }: TalkCardProps) {
   const { title, description, imageUrl, url } = talk;
 
   return (
@@ -22,7 +27,7 @@ function TalkCard({ talk }: { talk: Talk }) {
           rel="noopener noreferrer"
           className="inline-block mt-4 text-blue-600 hover:text-blue-800 "
         >
-          View →
+          {ctaLabel} →
         </a>
       </div>
     </div>

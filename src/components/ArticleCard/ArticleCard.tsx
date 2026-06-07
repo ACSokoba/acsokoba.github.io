@@ -1,12 +1,22 @@
 // ArticleCard.jsx
 import { useEffect, useState } from "react";
 import { Article } from "../../data";
+import { translations, type Language } from "../../i18n";
+
+type ArticleMetadata = {
+  title?: string;
+  description?: string;
+  image?: {
+    url?: string;
+  };
+};
 
 type ArticleCardProps = {
   article: Article;
+  language: Language;
 };
-const ArticleCard = ({ article }: ArticleCardProps) => {
-  const [metadata, setMetadata] = useState<any>(null);
+const ArticleCard = ({ article, language }: ArticleCardProps) => {
+  const [metadata, setMetadata] = useState<ArticleMetadata | null>(null);
 
   useEffect(() => {
     fetch(`https://api.microlink.io/?url=${encodeURIComponent(article.url)}`)
@@ -15,7 +25,7 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
       .catch((err) => console.error(err));
   }, [article]);
 
-  if (!metadata) return <p>No link preview</p>;
+  if (!metadata) return <p>{translations[language].noLinkPreview}</p>;
 
   return (
     <>

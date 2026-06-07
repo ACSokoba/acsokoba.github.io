@@ -1,3 +1,5 @@
+import type { Language } from "../../i18n";
+
 export type JobId = 'sfr' | 'carrefour' | 'orange';
 
 export interface ResumeState {
@@ -8,4 +10,6 @@ export interface ResumeState {
     };
 }
 
-export interface ResumeProps { } 
+export interface ResumeProps {
+    language: Language;
+} 
