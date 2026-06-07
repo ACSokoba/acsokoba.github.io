@@ -42,7 +42,9 @@ const ArticleCard = ({ article, language }: ArticleCardProps) => {
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold mt-2">{metadata?.title}</h3>
+            <h3 className="text-lg font-semibold mt-2">
+              {metadata?.title ?? article.title}
+            </h3>
             <p className="text-sm text-gray-600">{metadata?.description}</p>
           </div>
         </div>

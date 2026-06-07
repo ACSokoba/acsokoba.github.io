@@ -17,6 +17,7 @@ export const getTalks = (language: Language): Talk[] =>
 // Define the Article interface
 export interface Article {
   url: string;
+  title?: string;
 }
 
 export const articles: Article[] = [
@@ -27,6 +28,8 @@ export const articles: Article[] = [
   { url: "https://cloud.google.com/apis/design" },
   {
     url: "https://christianlydemann.com/18-performance-optimization-techniques-for-angular-applications-podcast-with-michael-hladky/",
+    title:
+      "18 Performance Optimization Techniques For Angular Applications (podcast with Michael Hladky)",
   },
   { url: "https://roadmap.sh/" },
   { url: "https://refactoring.guru/fr/refactoring/techniques" },

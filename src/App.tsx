@@ -69,6 +69,32 @@ function App() {
 
   return (
     <>
+      <div
+        className="fixed bottom-3 right-3 z-[60] rounded-2xl border border-white/70 bg-white/90 p-2 shadow-lg backdrop-blur-sm md:bottom-4 md:right-4"
+        aria-label={content.languageSwitchLabel}
+      >
+        <div className="flex items-center gap-1">
+          {availableLanguages.map((lang) => (
+            <button
+              key={lang}
+              type="button"
+              className={`flex items-center rounded-xl px-3 py-2 font-medium text-gray-600 transition-all duration-300 hover:bg-blue-50 ${
+                language === lang ? "bg-blue-100 text-blue-800" : ""
+              }`}
+              onClick={() => setLanguage(lang)}
+            >
+              <span
+                className="mr-2 inline-flex items-center"
+                aria-hidden="true"
+              >
+                <LanguageFlag language={lang} />
+              </span>
+              {content.languages[lang]}
+            </button>
+          ))}
+        </div>
+      </div>
+
       <div className="mx-5 lg:mx-16">
         <nav className="flex items-center md:justify-center mb-8 bg-white p-2 rounded-xl shadow-md sticky top-1 lg:top-5 z-50 mx-auto md:max-width-[1200px] px-8 overflow-auto scrollbar-hide">
           <a
@@ -131,30 +157,6 @@ function App() {
           >
             {content.nav.articles}
           </a>
-
-          <div
-            className="flex items-center ml-2 pl-3 border-l border-gray-200 min-w-fit"
-            aria-label={content.languageSwitchLabel}
-          >
-            {availableLanguages.map((lang) => (
-              <button
-                key={lang}
-                type="button"
-                className={`py-3 px-4 mx-1 text-gray-600 font-medium rounded-xl transition-all duration-300 hover:bg-blue-50 ${
-                  language === lang ? "bg-blue-100 text-blue-800" : ""
-                }`}
-                onClick={() => setLanguage(lang)}
-              >
-                <span
-                  className="mr-2 inline-flex items-center"
-                  aria-hidden="true"
-                >
-                  <LanguageFlag language={lang} />
-                </span>
-                {content.languages[lang]}
-              </button>
-            ))}
-          </div>
         </nav>
 
         {/* Resume Page */}
